@@ -86,6 +86,7 @@ const bookSeat = async (req, res) => {
     console.log("connected!");
 
     await db.collection("seats").updateOne(filter, updatedBooking);
+    await db.collection("users").insert({ fullName, email, seatId });
 
     lastBookingAttemptSucceeded = !lastBookingAttemptSucceeded;
     console.log(lastBookingAttemptSucceeded);
